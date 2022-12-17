@@ -1,0 +1,105 @@
+.header__logo {
+    margin-top: 80px;
+}
+
+/* signUp-modal */
+.signUp-modal__container {
+    width: 460px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+}
+
+.form__label {
+    display: inline-block;
+    margin-bottom: 6px;
+}
+
+input {
+    width: 100%;
+}
+
+select {
+    width: 100%;
+}
+
+.signUp-modal__birthday-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#user_birthdayY {
+    width: 30%;
+}
+
+#user_birthdayM {
+    width: 30%;
+}
+
+#user_birthdayD {
+    width: 30%;
+}
+
+.signUp-modal__email-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signUp-modal__email-symbol {
+    color: var(--color-gray);
+    font-size: var(--font-medium-large);
+    margin: 0 6px;
+}
+
+#user_email {
+    width: 45%;
+}
+
+#user_email-addr-list {
+    width: 45%;
+}
+
+#user_email-addr {
+    display: none;
+    width: 45%;
+    margin-right: 6px;
+}
+
+.signUp-modal__emailChk-button {
+    width: 100%;
+}
+
+#user-emailChk {
+    width: 45%;
+}
+
+.signUp-modal__emailChk {
+    display: none;
+}
+
+.signUp-modal__emailChk-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.signUp-modal__emailChk-time {
+    display: inline-block;
+    margin-left: 12px;
+    color: var(--color-red);
+    font-size: var(--font-medium);
+}
+
+.chk-btn {
+    width: 16%;
+    padding: 8px;
+    margin-left: 12px;
+}
+
+#msg_emailChk {
+    text-align: right;
+}
+
+.signUp-modal__submit {
+    margin-top: 28px;
+}

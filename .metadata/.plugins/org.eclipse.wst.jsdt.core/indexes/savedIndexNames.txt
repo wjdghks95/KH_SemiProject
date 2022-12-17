@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+D:\semiPro\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2353513258.index
+1408111629.index
+1325759955.index
+656370989.index
+1157029962.index
+1007009869.index

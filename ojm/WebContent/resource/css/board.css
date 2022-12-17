@@ -1,0 +1,138 @@
+/* board */
+.board {
+    width: 700px;
+    margin: 0 auto;
+    padding: 80px 0;
+}
+
+.board__content {
+    padding: 20px 28px;
+    background-color: var(--color-light-gray);
+    border-radius: 4px;
+    font-size: var(--font-medium);
+}
+
+.board__addr {
+    width: 60%;
+    height: 400px;
+    margin: 20px auto;
+}
+
+.board__detail-addr {
+    padding: 16px 28px;
+    border: 1px solid var(--color-gray);
+    font-size: var(--font-medium);
+}
+
+.board__button {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.board__link {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: var(--color-gray);
+    border-radius: 4px;
+    color: var(--color-white);
+    font-size: var(--font-medium);
+    transition: all .1s ease-in;
+}
+
+.board__link:hover {
+    background-color: var(--color-dark-gray);
+}
+
+/* comment */
+.comment {
+    width: 700px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+}
+
+.comment .section__headings {
+    align-items: flex-start;
+}
+
+.comment__comments {
+    padding: 0 0 20px;
+    font-size: var(--font-medium-small);
+}
+
+.comment__comment {
+    margin: 20px 0;
+    padding: 10px;
+    border-bottom: 1px solid var(--color-gray);
+}
+
+.comment__author {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.comment__content {
+    margin-bottom: 8px;
+}
+
+.comment__metadata {
+    color: var(--color-gray);
+    font-size: var(--font-small);
+}
+
+.overlay-btn {
+    margin-left: 12px;
+}
+
+.reply {
+    display: none;
+    margin-left: 40px;
+    padding: 12px 24px;
+    border: 1px solid var(--color-light-gray);
+    border-radius: 8px;
+}
+
+input {
+    width: 100%;
+}
+
+.reply input {
+    padding: 0;
+    border: none;
+}
+.reply input:focus {
+    outline: none;
+}
+
+.comment__reply-buttons {
+    text-align: right;
+}
+
+.comment__form {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.comment__form > .comment__author {
+    font-size: var(--font-medium-small);
+}
+
+.comment__form > input {
+    position: absolute;
+    right: 0;
+    max-width: 90%;
+    padding:0 30px 0 10px;
+}
+
+.comment__form > button {
+    position: absolute;
+    right: 8px;
+} 
+
+.form__msg {
+    text-align: right;
+    margin-top: 8px;
+}
+
+/* 카카오 지도 api */
+.bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}

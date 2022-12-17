@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="resource/icon/favicon.png">
+    <link rel="stylesheet" href="resource/css/style.css">
+    <link rel="stylesheet" href="resource/css/calendar.css">
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
+    <script src="resource/js/calendar.js"></script>
+    <title>캘린더</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__container">
+                <div class="header__logo">
+                    <a href="index.html">
+                        <img src="resource/image/logo.png" alt="로고">
+                    </a>
+                </div>
+                <div class="header__links">
+                    <a href="login.html" class="header__link">로그인</a>
+                    <a href="signUp.html" class="header__link">회원가입</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header -->
+
+    <nav class="nav">
+        <div class="container">
+            <ul class="nav__menu">
+                <li class="nav__item">
+                    <a href="index.html" class="nav__link">오점뭐</a>
+                </li>
+                <li class="nav__item">
+                    <a href="calendar.html" class="nav__link active">어점뭐</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- nav -->
+
+    <section class="calendar">
+        <div class="container">
+            <header class="section__headings">
+                <h2 class="section__heading--big">어제 점심은 뭐?</h2>
+                <p class="section__subheading">투표 결과로 먹은 메뉴가 무엇인지 월별로 확인해보세요</p>
+            </header>
+            <article class="section__content">
+                <header class="calendar__title">
+                    <button class="calendar__button calendar__button--prev">
+                        <img src="resource/icon/arrow-left.png" alt="prev">
+                    </button>
+                    <span class="calendar__current-year-month">May 2022</span>
+                    <button class="calendar__button calendar__button--next">
+                        <img src="resource/icon/arrow-right.png" alt="next">
+                    </button>
+                </header>
+                <div class="calendar__content">
+                    <div class="calendar__day-of-week">
+                    <div class="calendar__dayHeader sun">Sun</div>
+                    <div class="calendar__dayHeader">Mon</div>
+                    <div class="calendar__dayHeader">Tue</div>
+                    <div class="calendar__dayHeader">Wed</div>
+                    <div class="calendar__dayHeader">Thu</div>
+                    <div class="calendar__dayHeader">Fri</div>
+                    <div class="calendar__dayHeader sat">Sat</div>
+                    </div>
+                    <div class="calendar__body">
+<!--
+                        <div class="calendar__weekly">
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">1</p>
+                                <p class="calendar__menu"></p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">2</p>
+                                <p class="calendar__menu">까치네</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">3</p>
+                                <p class="calendar__menu">부대찌개</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">4</p>
+                                <p class="calendar__menu">돈까스</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">5</p>
+                                <p class="calendar__menu">순댓국</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">6</p>
+                                <p class="calendar__menu">갈비탕</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">7</p>
+                                <p class="calendar__menu"></p>
+                            </div>
+                        </div>
+                        <div class="calendar__weekly">
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">8</p>
+                                <p class="calendar__menu"></p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">9</p>
+                                <p class="calendar__menu">까치네</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">10</p>
+                                <p class="calendar__menu">부대찌개</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">11</p>
+                                <p class="calendar__menu">돈까스</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">12</p>
+                                <p class="calendar__menu">순댓국</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">13</p>
+                                <p class="calendar__menu">갈비탕</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">14</p>
+                                <p class="calendar__menu"></p>
+                            </div>
+                        </div>
+                        <div class="calendar__weekly">
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">15</p>
+                                <p class="calendar__menu"></p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">16</p>
+                                <p class="calendar__menu">까치네</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">17</p>
+                                <p class="calendar__menu">부대찌개</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">18</p>
+                                <p class="calendar__menu">돈까스</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">19</p>
+                                <p class="calendar__menu">순댓국</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">20</p>
+                                <p class="calendar__menu">갈비탕</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">21</p>
+                                <p class="calendar__menu"></p>
+                            </div>
+                        </div>
+                        <div class="calendar__weekly">
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">22</p>
+                                <p class="calendar__menu"></p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">23</p>
+                                <p class="calendar__menu">까치네</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">24</p>
+                                <p class="calendar__menu">부대찌개</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">25</p>
+                                <p class="calendar__menu">돈까스</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">26</p>
+                                <p class="calendar__menu">순댓국</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">27</p>
+                                <p class="calendar__menu">갈비탕</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">28</p>
+                                <p class="calendar__menu"></p>
+                            </div>
+                        </div>
+                        <div class="calendar__weekly">
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">29</p>
+                                <p class="calendar__menu"></p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">30</p>
+                                <p class="calendar__menu">까치네</p>
+                            </div>
+                            <div class="calendar__day">
+                                <p class="calendar__day-num">31</p>
+                                <p class="calendar__menu">부대찌개</p>
+                            </div>
+                        </div>
+-->
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!-- calendar -->
+
+    <footer class="footer">
+        <div class="container">
+            <header class="footer__headings">
+                <h3 class="footer__heading">Contact</h3>
+                <p class="footer__subheading">wjdghks2799@naver.com</p>
+            </header>
+            <article class="footer__content">
+                <ul class="footer__contacts">
+                    <li class="footer__contact">
+                        <a href="https://open.kakao.com/o/gApV4Eue" class="footer__contact-link">
+                            <img src="resource/icon/kakaotalk.png" alt="kakaotalk">
+                        </a>
+                    </li>
+                    <li class="footer__contact">
+                        <a href="https://blog.naver.com/wjdghks2799" class="footer__contact-link">
+                            <img src="resource/icon/naver-blog.png" alt="naver">
+                        </a>
+                    </li>
+                    <li class="footer__contact">
+                        <a href="https://www.instagram.com/j_hw95" class="footer__contact-link">
+                            <img src="resource/icon/instagram.png" alt="instagram">
+                        </a>
+                    </li>
+                    <li class="footer__contact">
+                        <a href="https://github.com/wjdghks95" class="footer__contact-link">
+                            <img src="resource/icon/github.png" alt="github" id="github">
+                        </a>
+                    </li>
+                </ul>
+                <p class="footer__copyright">Copyright <strong>© wjdghks95</strong> All Rights Reserved.</p>
+            </article>
+        </div>
+    </footer>
+    <!-- footer -->
+</body>
+</html>
