@@ -35,29 +35,22 @@ $(function() {
         alert('인증번호가 발송되었습니다.');
         $('.signUp-modal__emailChk').show();
         stopTimer(timer);
-
-        let code = sendCertificationNum();
-        startTimer(code);
+        sendCertificationNum();
     })
 
-    let pwdConfirm = false;
+    let pwdChk = false;
     $('#user_pwdChk, #user_pwd').on('keyup', function() {
-        pwdConfirm = pwdValidate();
+        pwdChk = pwdValidate();
     })
 
     $('.signUp-modal__submit').on('click', function() {
-        if(!pwdConfirm) {
+        if(!pwdChk) {
             $('#msg_pwdChk').text('비밀번호가 일치하지 않습니다.');
             $('#msg_pwdChk').addClass('error');
         }
-        
-        let emailAuth = $.parseJSON($('#isEmailChk').val());
-        if(!emailAuth) {
-            $('#msg_emailChk').text('이메일 인증을 완료해주세요.');
-            $('#msg_emailChk').addClass('error');
-        }
 
-        if(validate() && pwdConfirm && emailAuth) {
+        if(validate() && pwdChk) {
+			alert('회원가입에 성공하였습니다.');
             $('.signUp-modal__form').submit();
         }
     })
@@ -65,58 +58,71 @@ $(function() {
 
 // 이메일 합치기
 function addUpEmail() {
+    let totalEmail;
     if($('#user_email').val() !== '' && $('#user_email-addr').val() !== '') {
-        let totalEmail = $('#user_email').val() + '@' + $('#user_email-addr').val();
+        totalEmail = $('#user_email').val() + '@' + $('#user_email-addr').val();
         $("input[name='email']").val(totalEmail);
     } else {
         $("input[name='email']").val('');
     }
-    emailValidate();
+    emailValidate(totalEmail);
 }
 
 // 이메일 검증
-function emailValidate() {
+function emailValidate(email) {
     let regExp = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-    if(regExp.test($("input[name='email']").val())) {
-        $('.signUp-modal__emailChk-button').children().attr('disabled', false);
+    if(regExp.test(email)) {
+        // 이메일 중복 검사
+        emailDuplicateChk(email);
     } else {
         $('.signUp-modal__emailChk-button').children().attr('disabled', true);
     }
 }
 
-// 이메일 인증
-function emailAuthChk(code) {
-    if($('#user-emailChk').val() === "") {
-        $('#msg_emailChk').text('인증번호를 입력하세요.');
-        $('#msg_emailChk').addClass('error');
-        return;
-    }
-
-    if($('#user-emailChk').val() == code) {
-        $('#msg_emailChk').text('인증성공!');
-        $('#msg_emailChk').removeClass('error');
-        $('#user-emailChk').attr('readonly', true);
-        $('.signUp-modal__emailChk-button').children().attr('disabled', true);
-        $('#isEmailChk').val('true');
-        return true;
-    } else {
-        $('#msg_emailChk').text('인증에 실패하였습니다. 다시 확인해주세요.');
-        $('#msg_emailChk').addClass('error');
-        return false;
-    }
+// 이메일 중복 검사 ajax
+function emailDuplicateChk(email) {
+    $.ajax({
+        url: "emailDuplicateChk.do",
+        data: {"email" : email},
+        method: "GET",
+        success: function(result) {
+            if($.parseJSON(result)) {
+                $('#msg_email').text('이미 존재하는 이메일입니다.');
+                $('#msg_email').addClass('error');
+                $('.signUp-modal__emailChk-button').children().attr('disabled', true);
+            } else {
+                $('#msg_email').text('');
+                $('#msg_email').removeClass('error');
+                $('.signUp-modal__emailChk-button').children().attr('disabled', false);
+            }
+        },
+        error: function() {
+            console.log("ajax통신 실패");
+        }
+    })
 }
 
 // 이메일 인증번호 발송
 function sendCertificationNum() {
     let code = "";
-    // -------- TODO ajax 통신 ------- 
-    code = "000000";
+    let email = $('input[name="email"]').val();
     
-    return code;
+    $.ajax({
+        url: "mail.do",
+        data: {"email" : email},
+        method: "GET",
+        success: function(result) {
+            code = result;
+            startTimer(code);
+        },
+        error: function() {
+            console.log("ajax통신 실패");
+        }
+    })
 }
 
-// 타이머
+// 이메일 인증 타이머
 let timer;
 function startTimer(code) {
     let time = 180;
@@ -144,7 +150,7 @@ function startTimer(code) {
         }
 
         $('.chk-btn').on('click', function() {
-            if(emailAuthChk(code)) {
+            if(emailAuthValidate(code)) {
                 clearInterval(timer);
             }
         })
@@ -153,6 +159,28 @@ function startTimer(code) {
 
 function stopTimer() {
     clearInterval(timer);
+}
+
+// 이메일 인증
+function emailAuthValidate(code) {
+    if($('#user-emailChk').val() === "") {
+        $('#msg_emailChk').text('인증번호를 입력하세요.');
+        $('#msg_emailChk').addClass('error');
+        return;
+    }
+
+    if($('#user-emailChk').val() == code) {
+        $('#msg_emailChk').text('인증성공!');
+        $('#msg_emailChk').removeClass('error');
+        $('#user-emailChk').attr('readonly', true);
+        $('.signUp-modal__emailChk-button').children().attr('disabled', true);
+        $('#isEmailChk').val('true');
+        return true;
+    } else {
+        $('#msg_emailChk').text('인증에 실패하였습니다. 다시 확인해주세요.');
+        $('#msg_emailChk').addClass('error');
+        return false;
+    }
 }
 
 // 비밀번호 확인
@@ -242,7 +270,7 @@ function validate() {
 
     // 생년월일
     let birthChk = false;
-    if($('#user_birthdayY').val().length < 4) {
+    if($('#user_birthdayY').val().length != 4 ) {
         $('#msg_birthday').text('태어난 년도 4자리를 정확하게 입력하세요.')
         $('#msg_birthday').addClass('error');
         $('#user_birthdayY').focus();
@@ -298,8 +326,15 @@ function validate() {
         $('#msg_email').removeClass('error');
         emailChk = true;
     }
+
+    // 이메일 인증
+    let emailAuthChk = $.parseJSON($('#isEmailChk').val());
+    if(!emailAuthChk) {
+        $('#msg_emailChk').text('이메일 인증을 완료해주세요.');
+        $('#msg_emailChk').addClass('error');
+    }
     
-    if(idChk && pwdChk&& nameChk && birthChk && genderChk && emailChk) {
+    if(idChk && pwdChk && nameChk && birthChk && genderChk && emailChk && emailAuthChk) {
         return true;
     } else {
         return false;

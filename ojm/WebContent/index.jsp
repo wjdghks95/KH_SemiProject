@@ -1,34 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta author="JeongHwanLee">
-    <meta description="점심시간 전까지 각자 먹고 싶은 메뉴를 취합하고 투표를 통해 점심 메뉴를 정할 수 있는 웹 어플리케이션">
-    <link rel="shortcut icon" href="../resource/icon/favicon.png">
-    <link rel="stylesheet" href="../resource/css/style.css">
-    <link rel="stylesheet" href="../resource/css/index.css">
+    <link rel="shortcut icon" href="resource/icon/favicon.png">
+    <link rel="stylesheet" href="resource/css/style.css">
+    <link rel="stylesheet" href="resource/css/index.css">
     <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
     <script src="resource/js/index.js"></script>
     <title>오점뭐?</title>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="header__container">
-                <div class="header__logo">
-                    <a href="index.html">
-                        <img src="resource/image/logo.png" alt="로고">
-                    </a>
-                </div>
-                <div class="header__links">
-                    <a href="login.html" class="header__link">로그인</a>
-                    <a href="signUp.html" class="header__link">회원가입</a>
-                </div>
-            </div>
-        </div>
-    </header>
+    <%@ include file="common/header.jsp" %>
     <!-- header -->
 
     <nav class="nav">
@@ -194,39 +180,7 @@
     </section>
     <!-- vote-rs -->
 
-    <footer class="footer">
-        <div class="container">
-            <header class="footer__headings">
-                <h3 class="footer__heading">Contact</h3>
-                <p class="footer__subheading">wjdghks2799@naver.com</p>
-            </header>
-            <article class="footer__content">
-                <ul class="footer__contacts">
-                    <li class="footer__contact">
-                        <a href="https://open.kakao.com/o/gApV4Eue" class="footer__contact-link">
-                            <img src="resource/icon/kakaotalk.png" alt="kakaotalk">
-                        </a>
-                    </li>
-                    <li class="footer__contact">
-                        <a href="https://blog.naver.com/wjdghks2799" class="footer__contact-link">
-                            <img src="resource/icon/naver-blog.png" alt="naver">
-                        </a>
-                    </li>
-                    <li class="footer__contact">
-                        <a href="https://www.instagram.com/j_hw95" class="footer__contact-link">
-                            <img src="resource/icon/instagram.png" alt="instagram">
-                        </a>
-                    </li>
-                    <li class="footer__contact">
-                        <a href="https://github.com/wjdghks95" class="footer__contact-link">
-                            <img src="resource/icon/github.png" alt="github" id="github">
-                        </a>
-                    </li>
-                </ul>
-                <p class="footer__copyright">Copyright <strong>© wjdghks95</strong> All Rights Reserved.</p>
-            </article>
-        </div>
-    </footer>
+	<%@ include file="common/footer.jsp" %>
     <!-- footer -->
 </body>
 </html>

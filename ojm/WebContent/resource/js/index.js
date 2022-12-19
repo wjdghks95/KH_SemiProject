@@ -2,7 +2,6 @@ $(function() {
     setInterval(remainedTime, 1);
 })
 
-
 function remainedTime() {
     const now = new Date(); // 현재 날짜와 시간
     const start = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 06, 00, 00, 000); // 시작시간(오늘 날짜의 오전 06시00분)

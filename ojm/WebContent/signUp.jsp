@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,14 +18,14 @@
         <div class="container">
             <header class="section__headings">
                 <div class="header__logo">
-                    <a href="index.html">
+                    <a href="index.jsp">
                         <img src="resource/image/logo.png" alt="로고">
                     </a>
                 </div>
             </header>
             <section class="signUp-modal">
                 <article class="signUp-modal__container">
-                    <form action="signUp.html" method="post" class="signUp-modal__form">
+                    <form action="signUp" method="post" class="signUp-modal__form">
                         <div class="form__group">
                             <label for="user_id" class="form__label">아이디</label>
                             <input type="text" name="id" id="user_id" placeholder="아이디를 입력하세요">
