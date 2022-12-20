@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%
 	Long key = (Long) session.getAttribute("key");
+	String active = request.getParameter("active") != null ? request.getParameter("active") : null;
 %>
 <header class="header">
     <div class="container">

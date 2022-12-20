@@ -147,22 +147,26 @@
     font-size: var(--font-medium);
 }
 
-.vote-rs__content::before {
+.vote-rs__content > tbody {
+    position: relative;
+}
+
+.vote-rs__content > tbody::before {
     content: "";
     position: absolute;
-    top: 95px;
+    bottom: -15px;
     left: 0;
     width: 2px;
-    height: 258px;
+    height: 100%;
     background-color: var(--color-light-gray);
 }
 
-.vote-rs__content::after {
+.vote-rs__content > tbody::after {
     content: "";
     position: absolute;
     bottom: -16px;
     left: 0;
-    width: 512px;
+    width: 100%;
     height: 2px;
     background-color: var(--color-light-gray);
 }
@@ -178,7 +182,6 @@ caption.section__heading {
 
 .ratio {
     height: 18px;
-    background-color: var(--color-orange);
 }
 
 .vote-rs__content__close {

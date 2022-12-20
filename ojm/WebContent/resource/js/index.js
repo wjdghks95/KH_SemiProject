@@ -6,7 +6,6 @@ function remainedTime() {
     const now = new Date(); // 현재 날짜와 시간
     const start = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 06, 00, 00, 000); // 시작시간(오늘 날짜의 오전 06시00분)
     const end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 20, 00, 000); // 종료시간(오늘 날짜의 오후 12시20분)
-
     let nt = now.getTime(); // 현재 시간
     let st = start.getTime(); // 시작 시간
     let et = end.getTime(); // 종료 시간
@@ -16,9 +15,8 @@ function remainedTime() {
         $(".timer__timer").show();
         $(".timer__menu").hide();
         $('.vote-rs').hide();
-        $('.menu__links > .link-btn').attr('disabled', false);
-
         $(".timer__heding").text("점심시간까지 남은시간");
+
         time = parseInt(et - nt) / 1000;
         
         day  = parseInt(time/60/60/24);
@@ -53,17 +51,29 @@ function remainedTime() {
         $(".timer__seconds").text(sec);
         $(".timer__millisecond").text(ms);
     } else {
+        // 현재시간이 투표 시간이 아닌 경우 당첨 메뉴 표시
+        $(".timer__timer").hide();
+        $(".timer__menu").show();
         $('.vote-rs').show();
-        $('.menu__links > .link-btn').attr('disabled', true);
-        
+        $(".timer__heding").text('오늘의 메뉴');
+        getMenu();
+
+        $('.menu__links > .link-btn').attr('disabled', true);        
         $(".timer__seconds").css("color", "var(--color-black)");
         $(".timer__millisecond").css("color", "var(--color-black)");
-
-        // 투표 시간이 아닌 경우 당첨 메뉴 표시
-        $(".timer__heding").text('오늘의 메뉴');
-        $(".timer__timer").hide();
-
-        // ---------- TODO ajax 통신으로 당첨 메뉴 가지고오기 ------------
-        $(".timer__menu").show();
     }
+}
+
+function getMenu() {
+    $.ajax({
+        url: "getMenu.do",
+        method: "GET",
+        success: function(result) {
+            $('.timer__menu').text(result);
+            $('input[name="menu"]').val(result);
+        },
+        error: function() {
+            console.log('ajax 통신 실패');
+        }
+    })
 }

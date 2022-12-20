@@ -39,8 +39,6 @@ function buildCalendar(now) {
 
     makeElement(firstDate); // 날짜 생성
     getToday(new Date()); // 오늘 날짜 표시
-
-    // ----------- TODO ajax 통신을 통해 해당 일 메뉴 표시 ---------
 }
 
 function makeElement(firstDate) {
@@ -48,22 +46,35 @@ function makeElement(firstDate) {
     let currentdate = 1;
     for (let i = 0; i < 6; i++) { //  한달에 최대 6주 이상인 경우는 없으므로 i가 6 보다 작을 때 까지 반복
     let weeklyEl = $("<div class='calendar__weekly'></div>");
-        for (let j = 0; j < 7; j++) { // 일주일은 7일 이므로 i 가 7보다 작을 때까지 반복
-            // 만약 해당 칸에 날짜가 없으면 div 엘리먼트만 생성
-            if (i === 0 && j < firstDate.getDay() || currentdate > pageYear[firstDate.getMonth()]) {
-                let dateEl = $("<div class='calendar__day'></div>");
-                $(weeklyEl).append(dateEl);
-            } else { 
-                // 해당 칸에 날짜가 있으면 div 엘리먼트 생성 후 해당 날짜를 넣음
-                let dateEl = $(`<div class='calendar__day'>
-                                <p class="calendar__day-num">${currentdate}</p>
-                                <p class="calendar__menu">SK구내</p>
-                                </div>`);
-                weeklyEl.append(dateEl);
-                currentdate++;
-            }
+    for (let j = 0; j < 7; j++) { // 일주일은 7일 이므로 i 가 7보다 작을 때까지 반복
+        // 만약 해당 칸에 날짜가 없으면 div 엘리먼트만 생성
+        if (i === 0 && j < firstDate.getDay() || currentdate > pageYear[firstDate.getMonth()]) {
+            let dateEl = $("<div class='calendar__day'></div>");
+            $(weeklyEl).append(dateEl);
+        } else { 
+            // 해당 칸에 날짜가 있으면 div 엘리먼트 생성 후 해당 날짜를 넣음
+            $.ajax({
+                url: "getMenuList.do",
+                method: "GET",
+                async: false,
+                data: {"year": firstDate.getFullYear(),
+                        "month": firstDate.getMonth()+1,
+                        "date": currentdate
+                },
+                success: function(result) {
+                    let dateEl = $(`<div class='calendar__day'>
+                            <p class="calendar__day-num">${currentdate}</p>
+                            <p class="calendar__menu">${result}</p>
+                            </div>`);
+                    weeklyEl.append(dateEl);
+                },
+                error: function() {
+                    console.log("ajax 통신 실패");
+                }
+            })
+            currentdate++;
         }
-
+    }
     weekly++;
     $('.calendar__body').append(weeklyEl);
     }

@@ -227,17 +227,35 @@ function addUpBirthday() {
 // 입력값 검증
 function validate() {
     // id
+    let id = $('#user_id').val();
     let idChk = false;
     let regExp =  /^[a-zA-Z0-9]{4,7}$/;
-    if(!regExp.test($('#user_id').val())) {
+    if(!regExp.test(id)) {
         $('#msg_id').text('4~7자의 영문과 숫자 조합만 사용가능합니다.')
         $('#msg_id').addClass('error');
         $('#user_id').focus();
         idChk = false;
     } else {
-        $('#msg_id').text('멋진 아이디네요!')
-        $('#msg_id').removeClass('error');
-        idChk = true;
+        $.ajax({
+            url: 'idDuplicateChk.do',
+            method: 'GET',
+            data: {'id': id},
+            async: false,
+            success: function(result) {
+                if($.parseJSON(result)) {
+                    $('#msg_id').text('이미 존재하는 아이디입니다.');
+                    $('#msg_id').addClass('error');
+                    idChk = false;
+                } else {
+                    $('#msg_id').text('멋진 아이디네요!');
+                    $('#msg_id').removeClass('error');
+                    idChk = true;
+                }
+            }, 
+            error: function() {
+                console.log('ajax 통신 실패');
+            }
+        })
     }
 
     // 비밀번호

@@ -124,5 +124,95 @@ public class MemberMgr {
 		}
 		return result;
 	}
-
+	
+	public void updateBoardChk(Long id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			con = pool.getConnection();
+			sql = "UPDATE member SET board_chk = '1' WHERE member_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, id);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con,pstmt);
+		}
+	}
+	
+	public void updateVoteChk(Long id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			con = pool.getConnection();
+			sql = "UPDATE member SET vote_chk = '1' WHERE member_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, id);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con,pstmt);
+		}
+	}
+	
+	public MemberBean findById(Long id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		MemberBean bean = null;
+		
+		try {
+			con = pool.getConnection();
+			sql = "SELECT * FROM member WHERE member_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				bean = new MemberBean();
+				bean.setMember_id(rs.getLong(1));
+				bean.setId(rs.getString(2));
+				bean.setPassword(rs.getString(3));
+				bean.setName(rs.getString(4));
+				bean.setBirthday(rs.getString(5).substring(0, 11));
+				bean.setGender(rs.getString(6).charAt(0));
+				bean.setEmail(rs.getString(7));
+				bean.setVote_chk(rs.getString(8).charAt(0));
+				bean.setBoard_chk(rs.getString(9).charAt(0));
+				bean.setCreated_date(rs.getString(10).substring(0, rs.getString(10).length()-4));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con,pstmt, rs);
+		}
+		return bean;
+	}
+	
+	public void initVoteAndBoard() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			con = pool.getConnection();
+			sql = "UPDATE member SET vote_chk = '0' AND board_chk = '0'";
+			pstmt = con.prepareStatement(sql);		
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con,pstmt);
+		}	
+	}
 }

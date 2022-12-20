@@ -86,7 +86,11 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
 $('.submit-btn').on('click', function() {
     if(validate()) {
-        $('.menu-modal__form').submit();
+        menuDuplicateChk();
+        if($.parseJSON($('#menu_chk').val())) {
+            alert('메뉴를 등록하였습니다.');
+            $('.menu-modal__form').submit();
+        }
     }
 })
 
@@ -107,4 +111,25 @@ function validate() {
     }
 
     return true;
+}
+
+function menuDuplicateChk() {
+    let menu = $('input[name="menu"]').val();
+
+    $.ajax({
+        url: "menuDuplicateChk.do",
+        method: "GET",
+        data: {"menu": menu}, 
+        success: function(result) {
+            if($.parseJSON(result)) {
+                alert('이미 등록되어있는 메뉴입니다.');
+                $('#menu_chk').val('false');
+            } else {
+                $('#menu_chk').val('true');
+            }
+        },
+        error: function() {
+            console.log('ajax 통신 실패');
+        }
+    })
 }
