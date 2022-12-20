@@ -51,6 +51,7 @@
             <div class="container">
                 <header class="section__headings">
                     <h2 class="section__heading--big">메뉴 등록</h2>
+                    <p class="section__subheading">메뉴는 하루에 한 가지만 등록할 수 있습니다.</p>
                 </header>
                 <article class="section__content">
                     <form action="newBoard" method="post" class="menu-modal__form">

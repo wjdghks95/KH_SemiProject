@@ -15,7 +15,11 @@ body {
     text-align: center;
 }
 
-.pop-up__content::before {
+.pop-up__content > tbody {
+    position: relative;
+}
+
+.pop-up__content > tbody::before {
     content: "";
     position: absolute;
     bottom:-15px;
@@ -25,7 +29,7 @@ body {
     background-color: var(--color-light-gray);
 }
 
-.pop-up__content::after {
+.pop-up__content > tbody::after {
     content: "";
     position: absolute;
     bottom: -16px;

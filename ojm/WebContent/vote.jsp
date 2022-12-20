@@ -51,7 +51,7 @@
                 <header class="section__headings">
                     <h2 class="section__heading--big">투표하기</h2>
                     <p class="section__subheading">오늘의 점심메뉴를 선택하세요<br>
-                    <small>(2개까지 선택 가능)</small></p>
+                    <small>(2개까지 선택 가능, 하루에 한 번만 가능)</small></p>
                 </header>
                 <article class="section__content">
                     <form action="vote" method="post" class="vote__form" id="voteFrm">

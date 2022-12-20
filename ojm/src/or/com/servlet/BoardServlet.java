@@ -21,9 +21,7 @@ public class BoardServlet extends HttpServlet {
 		Long id = (Long) session.getAttribute("key");
 		
 		BoardMgr bMgr = new BoardMgr();
-		for(int i=0; i<40; i++) {
-			bMgr.insertBoard(request, id);			
-		}
+		bMgr.insertBoard(request, id);			
 		
 		MemberMgr mMgr = new MemberMgr();
 		mMgr.updateBoardChk(id);

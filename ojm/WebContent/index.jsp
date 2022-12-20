@@ -80,7 +80,7 @@
                         <span class="timer__seconds">11</span>:
                         <span class="timer__millisecond">100</span>
                     </p>
-                    <p class="timer__menu">SK구내</p>
+                    <p class="timer__menu"></p>
                 </header>
             </section>
             <!-- timer -->
@@ -174,14 +174,18 @@
 	           		if(member.getBoard_chk() == '1') {
 	          	%>
 	          			<script type="text/javascript">
-		    				$('.menu__links > .link-btn:last-child').attr('disabled', true);
+		    				$('.menu__links > .link-btn:last-child').on('click', function() {
+								alert('메뉴는 한가지만 등록할 수 있습니다.');
+							});
 		    			</script>
 	          	<%		
 	           		}
 	           		if(member.getVote_chk() == '1') {
         		%>
         				<script type="text/javascript">
-		    				$('.menu__links > .link-btn:first-child').attr('disabled', true);
+		    				$('.menu__links > .link-btn:first-child').on('click', function() {
+		    					alert('투표는 한 번만 가능합니다.');
+		    				});
 		    			</script>
 	           	<%
 	           		}

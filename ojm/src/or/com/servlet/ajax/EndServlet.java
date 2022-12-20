@@ -11,10 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import or.com.board.BoardBean;
 import or.com.board.BoardMgr;
+import or.com.member.MemberMgr;
 import or.com.menu.MenuMgr;
 
-@WebServlet("/getMenu.do")
-public class GetMenuServlet extends HttpServlet {
+@WebServlet("/end.do")
+public class EndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,6 +32,9 @@ public class GetMenuServlet extends HttpServlet {
 			if(!mMgr.existsById(id)) {
 				mMgr.insertMenu(id, menu, date);
 			}
+			
+			MemberMgr memMgr = new MemberMgr();
+			memMgr.initVoteAndBoard();
 			
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().print(menu);

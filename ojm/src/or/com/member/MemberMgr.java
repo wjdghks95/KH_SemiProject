@@ -206,7 +206,7 @@ public class MemberMgr {
 		
 		try {
 			con = pool.getConnection();
-			sql = "UPDATE member SET vote_chk = '0' AND board_chk = '0'";
+			sql = "UPDATE member SET vote_chk = '0', board_chk = '0'";
 			pstmt = con.prepareStatement(sql);		
 			pstmt.executeUpdate();
 		} catch (Exception e) {
