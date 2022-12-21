@@ -14,6 +14,9 @@ import or.com.board.BoardMgr;
 import or.com.menu.MenuBean;
 import or.com.menu.MenuMgr;
 
+/*  
+ * 메뉴들을 가져와 해당하는 날짜에 맞게 반환
+ */
 @WebServlet("/getMenuList.do")
 public class GetMenuListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

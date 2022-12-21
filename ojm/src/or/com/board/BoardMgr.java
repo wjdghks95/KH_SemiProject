@@ -267,4 +267,22 @@ public class BoardMgr {
 		
 		return totalCount;
 	}
+
+	public void deleteAll() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			con = pool.getConnection();
+			sql = "DELETE FROM board";
+			pstmt = con.prepareStatement(sql);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+	}
 }

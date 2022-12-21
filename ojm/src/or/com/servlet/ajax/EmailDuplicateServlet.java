@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import or.com.member.MemberMgr;
 
-
+/*
+ * 이메일 중복 체크 	
+ */
 @WebServlet("/emailDuplicateChk.do")
 public class EmailDuplicateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

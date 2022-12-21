@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/*  
+ * ---- [TODO] ----
+ * 이메일 인증번호 발송
+ */
 @WebServlet("/mail.do")
 public class MailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -11,6 +11,9 @@ import javax.servlet.http.HttpSession;
 import or.com.board.BoardMgr;
 import or.com.member.MemberMgr;
 
+/*  
+ * 투표하기
+ */
 @WebServlet("/vote")
 public class VoteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -16,18 +16,16 @@ public class MenuMgr {
 		pool = DBConnectionMgr.getInstance();
 	}
 	
-	public void insertMenu(Long id, String menu, String date) {
+	public void insertMenu(String menu) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
 		
 		try {
 			con = pool.getConnection();
-			sql = "INSERT INTO menu VALUES(?, ?, ?)";
+			sql = "INSERT INTO menu VALUES(SEQ_MEMBER.NEXTVAL, ?, DEFAULT)";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setLong(1, id);
-			pstmt.setString(2, menu);
-			pstmt.setString(3, date);
+			pstmt.setString(1, menu);
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {

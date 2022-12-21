@@ -94,6 +94,7 @@ $('.submit-btn').on('click', function() {
     }
 })
 
+// 입력값 검증
 function validate() {
     if($('input[name="menu"]').val() === '' || $('input[name="menu"]').val() === null) {
         alert('먹고 싶은 메뉴를 정하세요!');
@@ -113,6 +114,7 @@ function validate() {
     return true;
 }
 
+// 메뉴 중복 검사
 function menuDuplicateChk() {
     let menu = $('input[name="menu"]').val();
 

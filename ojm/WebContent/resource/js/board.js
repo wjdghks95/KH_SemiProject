@@ -45,18 +45,18 @@ $('.comment__form > button').on('click', function() {
         $('#msg_comment').text('의견을 작성하세요.');
         return;
     } else {
-        // ---------- TODO AJAX 통신 댓글 등록 -------------
+        // [TODO] AJAX 통신 댓글 등록
         $('.comment__form').submit();
     }
 })
 
 $(document).on('click', '.comment__comment button', function() {
-    // ---------- TODO 댓글 ID와 일치하는 대댓글 입력폼만 보여주기 --------
+    // [TODO] 댓글 ID와 일치하는 대댓글 입력폼만 보여주기
     $('.reply').show();
 })
 
 $(document).on('click', '.comment__reply-buttons > button:first-child', function() {
-    // ------------ TODO 댓글 ID와 일치하는 곳에 대댓글 입력 ------------
+    // [TODO] 댓글 ID와 일치하는 곳에 대댓글 입력
     if($('.reply input[name="content"]').val() === '' || $('.reply input[name="content"]').val() === null) {
         alert('댓글을 입력하세요.');
     } else {
@@ -65,6 +65,6 @@ $(document).on('click', '.comment__reply-buttons > button:first-child', function
 })
 
 $(document).on('click', '.comment__reply-buttons > button:last-child', function() {
-    // ------------ TODO 댓글 ID와 일치하는 대댓글 입력폼 숨김 ------------
+    // [TODO] 댓글 ID와 일치하는 대댓글 입력폼 숨김
     $('.reply').hide();
 })

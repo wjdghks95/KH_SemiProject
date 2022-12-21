@@ -11,6 +11,9 @@ import javax.servlet.http.HttpSession;
 import or.com.member.MemberBean;
 import or.com.member.MemberMgr;
 
+/*  
+ * 로그인
+ */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

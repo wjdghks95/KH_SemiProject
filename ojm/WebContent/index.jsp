@@ -46,9 +46,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="resource/icon/favicon.png">
     <link rel="stylesheet" href="resource/css/style.css">
-    <link rel="stylesheet" href="resource/css/index.css?ver=1">
+    <link rel="stylesheet" href="resource/css/index.css">
     <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
-    <script src="resource/js/index.js"></script>
+    <script src="resource/js/index.js?ver=2"></script>
     <title>오점뭐?</title>
 </head>
 <body>
@@ -73,12 +73,12 @@
         <div class="container">
             <section class="timer">
                 <header class="section__headings">
-                    <h2 class="section__heading--big timer__heding">점심시간까지 남은시간</h2>
+                    <h2 class="section__heading--big timer__heding"></h2>
                     <p class="timer__timer">
-                        <span class="timer__hours">03</span>:
-                        <span class="timer__minutes">20</span>:
-                        <span class="timer__seconds">11</span>:
-                        <span class="timer__millisecond">100</span>
+                        <span class="timer__hours"></span>
+                        <span class="timer__minutes"></span>
+                        <span class="timer__seconds"></span>
+                        <span class="timer__millisecond"></span>
                     </p>
                     <p class="timer__menu"></p>
                 </header>
@@ -99,6 +99,7 @@
                         </thead>
                         <tbody class="menu__list-body">
                             <%
+                            	
 	                            bList = bMgr.pagingBoardList(keyword, start, end);
 	                        	listSize =  bList.size();
                             	if(bList.isEmpty()) {

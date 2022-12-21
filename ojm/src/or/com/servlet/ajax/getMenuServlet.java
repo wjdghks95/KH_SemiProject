@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import or.com.board.BoardBean;
 import or.com.board.BoardMgr;
-import or.com.member.MemberMgr;
 import or.com.menu.MenuMgr;
 
-@WebServlet("/end.do")
-public class EndServlet extends HttpServlet {
+/*  
+ * 시간 경과 후 득표수가 가장 큰 메뉴 반환
+ */
+@WebServlet("/getMenu.do")
+public class getMenuServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,18 +26,8 @@ public class EndServlet extends HttpServlet {
 		if(!bList.isEmpty()) {
 			BoardBean bean = bList.stream().max((c1, c2) -> 
 				Integer.compare(c1.getCount(), c2.getCount())).get();
-			Long id = bean.getBoard_id();
 			String menu = bean.getMenu();
-			String date = bean.getCreated_date().substring(0, 11);
-			
-			MenuMgr mMgr = new MenuMgr();
-			if(!mMgr.existsById(id)) {
-				mMgr.insertMenu(id, menu, date);
-			}
-			
-			MemberMgr memMgr = new MemberMgr();
-			memMgr.initVoteAndBoard();
-			
+						
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().print(menu);
 		}

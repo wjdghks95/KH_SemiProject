@@ -80,6 +80,7 @@ function makeElement(firstDate) {
     }
 }
 
+// 오늘 날짜
 function getToday(today) {
     const currYear = today.getFullYear();
     const currMonth = today.getMonth()+1;

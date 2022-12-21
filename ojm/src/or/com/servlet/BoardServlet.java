@@ -11,6 +11,9 @@ import javax.servlet.http.HttpSession;
 import or.com.board.BoardMgr;
 import or.com.member.MemberMgr;
 
+/*
+ * 게시글 작성 	
+ */
 @WebServlet("/newBoard")
 public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

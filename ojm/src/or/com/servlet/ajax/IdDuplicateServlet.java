@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import or.com.member.MemberMgr;
 
-
+/*  
+ * 아이디 중복 체크
+ */
 @WebServlet("/idDuplicateChk.do")
 public class IdDuplicateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

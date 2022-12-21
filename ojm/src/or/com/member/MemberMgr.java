@@ -14,7 +14,6 @@ public class MemberMgr {
 		pool = DBConnectionMgr.getInstance();
 	}
 
-	// 회원가입
 	public void insertMember(HttpServletRequest req) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -38,7 +37,6 @@ public class MemberMgr {
 		}	
 	}
 
-	// 로그인
 	public MemberBean loginMember(String email, String pwd) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
